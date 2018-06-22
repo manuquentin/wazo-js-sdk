@@ -1,10 +1,13 @@
 import axios from 'axios';
 
 import wazo from '../../config';
-import version from './version';
+import api from '.';
+import token from './token';
 
 const handleResponse = (callback) => {
-  wazo.token = null;
+  token.data = null;
+
+  window.localStorage.removeItem('wazoAuth');
 
   if (callback) {
     callback(wazo.token);
@@ -13,7 +16,7 @@ const handleResponse = (callback) => {
 
 export default (params) => {
   if (wazo.token) {
-    const url = `https://${wazo.server}/api/auth/${version}/token/${wazo.token}`;
+    const url = `https://${wazo.server}/${api}/${wazo.token}`;
 
     axios.delete(url)
       .then(handleResponse(params.callback));

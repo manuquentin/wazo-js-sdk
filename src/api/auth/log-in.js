@@ -1,10 +1,16 @@
 import axios from 'axios';
 
 import wazo from '../../config';
-import version from './version';
+import api from '.';
+import token from './token';
 
 const handleResponse = (response, callback) => {
   wazo.token = response.data.data.token;
+  token.set(response.data.data);
+
+  console.log(token.get());
+
+  window.localStorage.setItem('wazoAuth', JSON.stringify(response.data.data));
 
   if (callback) {
     callback(wazo.token);
@@ -12,7 +18,7 @@ const handleResponse = (response, callback) => {
 };
 
 export default (params) => {
-  const url = `https://${wazo.server}/api/auth/${version}/token`;
+  const url = `https://${wazo.server}/${api}`;
   const data = {
     backend: 'wazo_user',
     expiration: params.expiration || 3600,

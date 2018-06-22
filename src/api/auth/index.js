@@ -1,3 +1,1 @@
-export default {
-  path: '/api/auth/0.1/token',
-};
+export default 'api/auth/0.1/token';
