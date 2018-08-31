@@ -21,6 +21,8 @@ import listUsers from './api/confd/users';
 import getUser from './api/confd/user';
 import getUserLineSip from './api/confd/user-line';
 
+import listApplications from './api/confd/applications';
+
 import WebRTCPhone from './api/phone';
 import WazoWebSocket from './api/websocket';
 
@@ -43,6 +45,7 @@ export default {
   listUsers,
   getUser,
   getUserLineSip,
+  listApplications,
   WebRTCPhone,
   WazoWebSocket,
 };
