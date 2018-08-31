@@ -4,10 +4,10 @@ import wazo from '../../config';
 import version from './version';
 
 const handleResponse = (response, callback) => {
-  wazo.token = response.data.data.token;
+  wazo.data = response.data.data;
 
   if (callback) {
-    callback(wazo.token);
+    callback(wazo.data);
   }
 };
 
